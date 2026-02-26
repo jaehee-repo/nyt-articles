@@ -1,0 +1,18 @@
+# dbt Specific
+logs/
+target/
+dbt_packages/
+dbt_modules/
+
+# DuckDB / SQLite (Database files)
+*.duckdb
+*.duckdb.wal
+*.db
+*.sqlite
+
+# Python Specific
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
