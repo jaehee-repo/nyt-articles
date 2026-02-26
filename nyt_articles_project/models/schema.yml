@@ -1,0 +1,29 @@
+version: 1
+
+models:
+  - name: silver_nyt_articles
+    description: "Cleaned NYT article metadata"
+    columns:
+      - name: article_id
+        tests:
+          - not_null
+          - unique
+      - name: headline
+        tests:
+          - not_null
+      - name: word_count
+        tests:
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                inclusive: true
+  - name: gold_nyt_articles
+    description: "Aggregated NYT article metadata"
+    columns:
+      - name: news_desk
+        tests:
+          - not_null
+      - name: total_articles
+        tests:
+          - dbt_utils.at_least_one:
+              arguments: {}

@@ -1,0 +1,7 @@
+nyt_articles_project:
+  outputs:
+    dev:
+      type: duckdb
+      path: '<path>/.duckdb'
+      threads: 4
+  target: dev

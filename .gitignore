@@ -3,6 +3,7 @@ logs/
 target/
 dbt_packages/
 dbt_modules/
+.user.yml
 
 # DuckDB / SQLite (Database files)
 *.duckdb

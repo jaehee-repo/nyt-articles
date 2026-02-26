@@ -22,6 +22,10 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
 
+# This ensures dbt-utils functions correctly with the DuckDB adapter
+dispatch:
+  - macro_namespace: dbt_utils
+    search_order: ['dbt_utils', 'dbt']
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
@@ -31,6 +35,10 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   nyt_articles_project:
-    # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+    +materialized: view
+
+    silver_nyt_articles:
+      +materialized: table
+
+    gold_nyt_articles:
+      +materialized: table
